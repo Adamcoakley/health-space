@@ -19,17 +19,17 @@ const LoginScreen = ({ navigation }) => {
             iconType='mail'
             placeholder='Email Address'
             keyboardType='email-address'
-            autoCapitalise='none'
-            autoCorrect='false' /> 
+            autoCapitalise='none'/> 
         <FormInput
             labelValue={password}
             onChangeText={(password) => setPassword(password)}
             iconType='lock'
             placeholder='Password'
-            keyboardType='email-address'
-            secureTextEntry='True' /> 
+            keyboardType='email-address'/> 
         <TouchableOpacity style={styles.forgotButton} onPress={() => {}}>
+        <View style={styles.forgotButtonContainer}>
             <Text style={styles.forgotButtonText}>Forgot Password?</Text> 
+        </View>
         </TouchableOpacity> 
         <FormButton 
             title="Sign In" 
@@ -38,14 +38,14 @@ const LoginScreen = ({ navigation }) => {
         <SocialButton 
             title='Sign in with Facebook' 
             type='facebook' 
-            color='#FFF' 
-            backgroundColor='#0C4BAE'/>
+            color='#4867AA' 
+            backgroundColor='#E6EAF4'/>
         <SocialButton 
             title='Sign in with Google' 
             type='google' 
             color='#DE4D41' 
             backgroundColor='#F5E7EA'/>
-        <TouchableOpacity style={styles.forgotButton} onPress={() => navigation.navigate('RegisterScreen')}>
+        <TouchableOpacity style={styles.signUpText} onPress={() => navigation.navigate('RegisterScreen')}>
         <Text style={styles.navButtonText}> Don't have an account? Sign up! </Text>
       </TouchableOpacity>
     </View>
@@ -58,21 +58,25 @@ const styles = StyleSheet.create({
     container:{
         flex: 1,
         backgroundColor: '#FFF',
-        //justifyContent: 'center',
         alignItems: 'center',
     },
     image:{
         width: 400,
         height: 200,
-        marginTop: 60,
     },
     heading:{
         fontFamily: 'Verdana',
         fontSize: 25,
-        marginBottom: 10,
     },
     subHeading:{
         fontFamily: 'Verdana',
         fontSize: 14,
     },
+    connectUsingText: {
+      
+    },
+    forgotButton:{
+        alignSelf: 'flex-end',
+        marginRight: '10%',
+    }
 });

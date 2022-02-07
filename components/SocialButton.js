@@ -21,7 +21,6 @@ export default SocialButton;
 
 const styles = StyleSheet.create({
   buttonContainer: {
-    marginTop: 10,
     width: '80%',
     height: windowHeight / 18,
     padding: 10,

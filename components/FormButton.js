@@ -14,9 +14,9 @@ export default FormButton;
 
 const styles = StyleSheet.create({
     container:{
+        
         justifyContent: 'center',
         alignItems: 'center',
-        padding: 10,
         borderRadius: 3,
         backgroundColor: '#0C4BAE',
         width: '80%',

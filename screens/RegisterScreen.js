@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { View, Text, Button, Image, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
-//import components
+import DateTimePicker from '@react-native-community/datetimepicker';
+//import custom components
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 import SocialButton from '../components/SocialButton';
@@ -9,6 +10,8 @@ const RegisterScreen = ({ navigation }) => {
     const [name, setName] = useState();
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
+    const [confirmPass, setConfirmPass] = useState();
+
     return(
     <View style={styles.container}>
         <Image source={require('../assets/register.png')} resizeMode='contain' style={styles.image} /> 
@@ -35,8 +38,8 @@ const RegisterScreen = ({ navigation }) => {
             placeholder='Password'
             keyboardType='email-address' /> 
         <FormInput
-            labelValue={password}
-            onChangeText={(password) => setPassword(password)}
+            labelValue={confirmPass}
+            onChangeText={(confirmPass) => setConfirmPass(confirmPass)}
             iconType='lock'
             placeholder='Confirm Password'
             keyboardType='email-address' /> 
@@ -57,19 +60,24 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#FFF',
         alignItems: 'center',
+        justifyContent: 'center',
     },
     image:{
         width: 400,
         height: 200,
+        marginTop: 50,
     },
     heading:{
         fontFamily: 'Verdana',
         fontSize: 25,
+        marginTop: 15,
     },
     subHeading:{
         fontFamily: 'Verdana',
         fontSize: 14,
+        marginTop: 15,
     },
     signInText: {
+        marginTop: 15,
     }
 });

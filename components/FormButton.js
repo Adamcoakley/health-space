@@ -14,7 +14,7 @@ export default FormButton;
 
 const styles = StyleSheet.create({
     container:{
-        
+        marginTop: 15,
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 3,

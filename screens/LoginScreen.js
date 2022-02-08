@@ -59,6 +59,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#FFF',
         alignItems: 'center',
+        justifyContent: 'center',
     },
     image:{
         width: 400,
@@ -71,12 +72,17 @@ const styles = StyleSheet.create({
     subHeading:{
         fontFamily: 'Verdana',
         fontSize: 14,
-    },
-    connectUsingText: {
-      
+        marginTop: 15,
     },
     forgotButton:{
         alignSelf: 'flex-end',
         marginRight: '10%',
+        marginTop: 15,
+    }, 
+    connectUsingText: {
+        marginTop: 15,
+    },
+    signUpText: {
+        marginTop: 15,
     }
 });

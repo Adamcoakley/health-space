@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Button, Image, Text, View } from 'react-native';
+import { Button, Image, Text, View } from 'react-native';
 import Onboarding from 'react-native-onboarding-swiper';
 
 const OnboardingScreen = ({ navigation }) => {
@@ -31,17 +31,8 @@ const OnboardingScreen = ({ navigation }) => {
       title: 'Chat',
       subtitle: 'Communicate with people of similar health interests via private messages',
     },
-    ]} 
-    />
+    ]} />
     );
 };
 
 export default OnboardingScreen;
-
-const styles = StyleSheet.create({
-    container:{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-});

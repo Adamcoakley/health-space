@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import { View, Text, Button, Image, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
-import DateTimePicker from '@react-native-community/datetimepicker';
 //import custom components
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
@@ -20,7 +19,7 @@ const RegisterScreen = ({ navigation }) => {
         <FormInput
             labelValue={name}
             onChangeText={(name) => setName(name)}
-            iconType='mail'
+            iconType='user'
             placeholder='Full Name'
             keyboardType='email-address'
             autoCapitalise='none' /> 
@@ -65,7 +64,6 @@ const styles = StyleSheet.create({
     image:{
         width: 400,
         height: 200,
-        marginTop: 50,
     },
     heading:{
         fontFamily: 'Verdana',

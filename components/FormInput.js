@@ -1,13 +1,13 @@
 import React from 'react';
 import {View, TextInput, StyleSheet} from 'react-native';
 import {windowHeight, windowWidth} from '../utils/Dimensions';
-import { Foundation } from '@expo/vector-icons'; 
+import { Feather } from '@expo/vector-icons'; 
 
 const FormInput = ({labelValue, placeholderText, iconType, ...rest}) => {
   return (
     <View style={styles.inputContainer}>
       <View style={styles.iconStyle}>
-        <Foundation name={ iconType } size={25} color="#000" />
+        <Feather name={ iconType } size={18} color="#000" />
       </View>
       <TextInput
         value={labelValue}

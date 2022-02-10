@@ -33,7 +33,7 @@ const LoginScreen = ({ navigation }) => {
         </TouchableOpacity> 
         <FormButton 
             title="Sign In" 
-            onPress={() => alert('Button Clicked')} />
+            onPress={() => navigation.navigate('HomeTabs')} />
         <Text style={styles.connectUsingText} > Or connect using </Text>
         <SocialButton 
             title='Sign in with Facebook' 
@@ -45,9 +45,9 @@ const LoginScreen = ({ navigation }) => {
             type='google' 
             color='#DE4D41' 
             backgroundColor='#F5E7EA'/>
-        <TouchableOpacity style={styles.signUpText} onPress={() => navigation.navigate('RegisterScreen')}>
-        <Text style={styles.navButtonText}> Don't have an account? Sign up! </Text>
-      </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('RegisterScreen')}>
+        <Text style={styles.noAccountText}> Don't have an account? <Text style={styles.signUpText}> Sign up! </Text></Text>
+        </TouchableOpacity>
     </View>
     );
 };
@@ -66,23 +66,38 @@ const styles = StyleSheet.create({
         height: 200,
     },
     heading:{
-        fontFamily: 'Verdana',
+        fontFamily: 'Arial',
         fontSize: 25,
     },
     subHeading:{
-        fontFamily: 'Verdana',
-        fontSize: 14,
+        fontFamily: 'Arial',
+        fontSize: 15,
         marginTop: 15,
     },
     forgotButton:{
         alignSelf: 'flex-end',
         marginRight: '10%',
         marginTop: 15,
-    }, 
+    },
+    forgotButtonText:{
+        fontFamily: 'Arial',
+        fontSize: 14,
+    },
     connectUsingText: {
+        fontFamily: 'Arial',
+        fontSize: 14,
+        marginTop: 15,
+    },
+    noAccountText: {
+        fontFamily: 'Arial',
+        fontSize: 15,
         marginTop: 15,
     },
     signUpText: {
+        color: '#0C4BAE',
+        fontFamily: 'Arial',
+        fontWeight: 'bold',
+        fontSize: 15,
         marginTop: 15,
     }
 });

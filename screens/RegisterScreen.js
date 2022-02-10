@@ -45,8 +45,8 @@ const RegisterScreen = ({ navigation }) => {
         <FormButton 
             title="Sign Up" 
             onPress={() => alert('Button Clicked')} />
-        <TouchableOpacity style={styles.signInText} onPress={() => navigation.navigate('LoginScreen')}>
-        <Text style={styles.navButtonText}> Already have an account? Sign in! </Text>
+        <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
+        <Text style={styles.haveAccountText}> Already have an account? <Text style={styles.signInText}>Sign in! </Text></Text>
       </TouchableOpacity>
     </View>
     );
@@ -66,16 +66,25 @@ const styles = StyleSheet.create({
         height: 200,
     },
     heading:{
-        fontFamily: 'Verdana',
+        fontFamily: 'Arial',
         fontSize: 25,
         marginTop: 15,
     },
     subHeading:{
-        fontFamily: 'Verdana',
-        fontSize: 14,
+        fontFamily: 'Arial',
+        fontSize: 15,
+        marginTop: 15,
+    },
+    haveAccountText: {
+        fontFamily: 'Arial',
+        fontSize: 15,
         marginTop: 15,
     },
     signInText: {
+        color: '#0C4BAE',
+        fontFamily: 'Arial',
+        fontWeight: 'bold',
+        fontSize: 15,
         marginTop: 15,
     }
 });

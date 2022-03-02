@@ -5,7 +5,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 const ChatScreen = ({ navigation }) => { {
   return (
-    <View>
+    <View style={styles.container}>
       <Text> Chat Screen </Text>
     </View>
   );

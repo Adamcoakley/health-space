@@ -4,8 +4,8 @@ import { StyleSheet, Text, View } from 'react-native';
 
 const NotificationsScreen = ({ navigation }) => { {
   return (
-    <View>
-      <Text> Notifications Screen </Text>
+    <View style={styles.container}>
+      <Text> Notifications Screen </Text> 
     </View>
   );
 }};

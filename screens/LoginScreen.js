@@ -1,16 +1,38 @@
 import React, {useState} from 'react';
-import { View, Text, Button, Image, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, Button, Image, StyleSheet, ScrollView, TouchableOpacity, 
+        TouchableWithoutFeedback, Keyboard} from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 //import components
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 import SocialButton from '../components/SocialButton';
+//firebase
+import firebase from 'firebase/compat/app';
+import { auth, db } from '../config/Firebase';
 
 const LoginScreen = ({ navigation }) => { 
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
+
+    const onLogin = () => {
+        firebase.auth().signInWithEmailAndPassword(email, password)
+        .then((result) => {
+            console.log("Firebase login succesfull:", email, password)
+        })
+        .catch((error) => {
+            console.log("Firebase login failed:", email, password)
+        })
+    } 
+
     return(
-    <View style={styles.container}>
-        <Image source={require('../assets/login.png')} resizeMode='contain' style={styles.image} /> 
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+    <KeyboardAwareScrollView 
+        style={{backgroundColor: '#fff'}}
+        contentContainerStyle={styles.container}
+        resetScrollToCoords={{x: 0, y: 0}}
+        scrollEnabled={false}
+        >
+        <Image source={require('../assets/illustration-one.png')} resizeMode='contain' style={styles.illustration} />
         <Text style={styles.heading}>Welcome Back!</Text>
         <Text style={styles.subHeading}>Sign in to continue</Text> 
         <FormInput
@@ -33,7 +55,7 @@ const LoginScreen = ({ navigation }) => {
         </TouchableOpacity> 
         <FormButton 
             title="Sign In" 
-            onPress={() => navigation.navigate('HomeTabs')} />
+            onPress={onLogin} />
         <Text style={styles.connectUsingText} > Or connect using </Text>
         <SocialButton 
             title='Sign in with Facebook' 
@@ -48,11 +70,13 @@ const LoginScreen = ({ navigation }) => {
         <TouchableOpacity onPress={() => navigation.navigate('RegisterScreen')}>
         <Text style={styles.noAccountText}> Don't have an account? <Text style={styles.signUpText}> Sign up! </Text></Text>
         </TouchableOpacity>
-    </View>
+    </KeyboardAwareScrollView>
+    </TouchableWithoutFeedback>
     );
 };
 
 export default LoginScreen;
+
 
 const styles = StyleSheet.create({
     container:{
@@ -61,7 +85,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    image:{
+    illustration:{
         width: 400,
         height: 200,
     },

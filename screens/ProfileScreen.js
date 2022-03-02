@@ -4,8 +4,12 @@ import { StyleSheet, Text, View } from 'react-native';
 
 
 const ProfileScreen = ({ navigation }) => { {
+  state ={
+    user:{}
+  }
+
   return (
-    <View>
+    <View style={styles.container}>
       <Text> Profile Screen </Text>
     </View>
   );

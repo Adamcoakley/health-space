@@ -11,7 +11,6 @@
   },
   "dependencies": {
     "@expo-google-fonts/lobster": "^0.2.2",
-    "@react-native-async-storage/async-storage": "^1.15.17",
     "@react-native-community/datetimepicker": "^4.0.0",
     "@react-native-community/masked-view": "^0.1.11",
     "@react-native-firebase/app": "^14.7.0",

@@ -19,7 +19,7 @@ The application contains all of a social networking application's defining featu
 <img src="https://i.imgur.com/cBpyT1i.png" width="300"><img src="https://i.imgur.com/ufOFz5X.png" width="300"><br>
 <img src="https://i.imgur.com/GWz0LkE.png" width="300">
 ## Demo Video 🎥
-[soon]
+https://www.youtube.com/watch?v=ZkB-KLbmjiM&t=25s
 ## Showcase Website 👨🏻‍💻
 https://showcase.itcarlow.ie/C00240782/index.html
 ## Usage ✍🏼

@@ -179,6 +179,7 @@ const Post = ({ post }) => {
       // if a token exists, send a notification to the user
       if(post.token) {
         sendPushNotification(post.token);
+        console.log('Notification sent to: ' + post.token);
       }
       
       // store the notification in the database for ui purposes

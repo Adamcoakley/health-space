@@ -37,6 +37,16 @@ const PostScreen = ({ navigation }) => {{
     }
   };
 
+  // get the user's token for from user's collection 
+  const getToken = async () => {
+    const data = await db.collection('users').doc(firebase.auth().currentUser.uid).get();
+    setToken(data.data().token);
+    // check if token is null
+    if (token === null) {
+      setToken('');
+    }
+  };
+
   // get the current user's info 
   const getUser = async() => {
     db.collection('users')
@@ -48,14 +58,15 @@ const PostScreen = ({ navigation }) => {{
         setProfilePicture(documentSnapshot.data().profile_picture);
         setName(documentSnapshot.data().name);
         setUserId(documentSnapshot.data().id);
-        setToken(documentSnapshot.data().token);
       }
     })
   }
 
   // get the current user on page load
   useEffect(() => {
+    getToken();
     getUser();
+    console.log('token', token);
   }, []);
       
   //handle the post's submission 

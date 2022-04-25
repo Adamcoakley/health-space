@@ -1,11 +1,12 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+// mobile window height and width from Dimensions
 import {windowHeight, windowWidth} from '../utils/Dimensions';
 
 const FormButton = ({ navigation, title, ...rest }) => {
     return(
     <TouchableOpacity style={styles.container} {...rest}>
-    <Text style={styles.text}>{title}</Text>
+        <Text style={styles.text}>{title}</Text>
     </TouchableOpacity>
     );
 };

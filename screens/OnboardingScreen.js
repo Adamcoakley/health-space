@@ -17,19 +17,19 @@ const OnboardingScreen = ({ navigation }) => {
       backgroundColor: '#0C4BAE',
       image: <Image style={{ width: 100, height: 100 }} source={require('../assets/like.png')} />,
       title: 'Reactions',
-      subtitle: 'React to posts and photos with likes, dislikes and more',
+      subtitle: "Interact with other user's posts and photos with likes and comments",
     },
     {
       backgroundColor: '#0C4BAE',
-      image: <Image style={{ width: 100, height: 100 }} source={require('../assets/group.png')} />,
-      title: 'Groups',
-      subtitle: 'Join and connect with groups of people with similar health interests',
+      image: <Image style={{ width: 100, height: 100 }} source={require('../assets/link.png')} />,
+      title: 'Connect',
+      subtitle: 'Connect with those who share similar health interests and experiences',
     },
     {
       backgroundColor: '#0C4BAE',
       image: <Image style={{ width: 100, height: 100 }} source={require('../assets/chat.png')} />,
       title: 'Chat',
-      subtitle: 'Communicate with people of similar health interests via private messages',
+      subtitle: 'Communicate with people of similar health interests via private messaging',
     },
     ]} />
     );

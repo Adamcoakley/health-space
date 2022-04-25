@@ -1,6 +1,8 @@
 import React from 'react';
 import {View, TextInput, StyleSheet} from 'react-native';
+// mobile window height and width from Dimensions
 import {windowHeight, windowWidth} from '../utils/Dimensions';
+// icon
 import { Feather } from '@expo/vector-icons'; 
 
 const FormInput = ({labelValue, placeholderText, iconType, ...rest}) => {

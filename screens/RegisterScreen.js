@@ -1,52 +1,94 @@
 import React, {useState} from 'react';
-import { View, Text, Button, Image, StyleSheet, ScrollView, 
-        TouchableOpacity, TouchableWithoutFeedback, Keyboard} from 'react-native';
-        import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import { View, Text, Button, Image, StyleSheet, ScrollView, TouchableOpacity, TouchableWithoutFeedback, Keyboard} from 'react-native';
+// KeyboardAwareScrollView: does not hide the input when the keyboard is shown
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+// icons 
 import {Ionicons} from '@expo/vector-icons';
+// image picker
 import * as ImagePicker from 'expo-image-picker';
-//import custom components
+// import custom components
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 import SocialButton from '../components/SocialButton';
-//firebase
+// firebase
 import firebase from 'firebase/compat/app';
-import { auth, db } from '../config/Firebase';
+import { auth, db, firebaseConfig } from '../config/Firebase';
+// image storage
+import { getStorage, ref, uploadBytesResumable, getDownloadURL, uploadBytes } from "firebase/storage";
 
 const RegisterScreen = ({ navigation }) => { 
+    // state variables 
     const [name, setName] = useState();
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [confirmPass, setConfirmPass] = useState();
     const [image, setImage] = useState(null);
 
-    const onSignup = async () => {
-        try {
-            const authUser = await firebase.auth().createUserWithEmailAndPassword(email, password)
-            .then(data => {
-                db.collection('users').add({
-                user_id: data.user.uid,
-                name: name,
-                email: data.user.email,
-                profile_picture: image,
-                })
-            })
-        } catch (error) {
-            console.log(error)
-        }
-    } 
-
-    // handle the user's profile picture 
+    // function to launch the image library, allowing the user to select an image
     const pickImage = async () => {
-        // No permissions request is necessary for launching the image library
+        // no permissions request are necessary
         let result = await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: ImagePicker.MediaTypeOptions.All,
-        allowsEditing: true,
-        aspect: [4, 3],
-        quality: 1,
+            mediaTypes: ImagePicker.MediaTypeOptions.All,
+            allowsEditing: true,
+            aspect: [4, 3],
+            quality: 1
         });
-
         if (!result.cancelled) {
-        setImage(result.uri);
+            setImage(result.uri);
+        }
+    };
+
+    // function to handle the sign up process
+    const handleSignup = async (image) => {
+        // get the current time
+        const time = new Date().getTime();
+
+        // create the file metadata
+        /** @type {any} */
+        const metadata = {
+            contentType: 'image/jpeg'
+        };
+        // upload the image to firebase storage
+        const result = await fetch(image);
+        // get the blob of the image
+        const blob = await result.blob();
+        // create a reference to the location where we want to store the image
+        const storage = getStorage();
+        const storageRef = ref(storage, 'images/' + time + '.jpg');
+        // upload the image to the storage reference
+        const uploadTask = await uploadBytesResumable(storageRef, blob, metadata);
+        // get the download url of the image
+        const downloadURL = await getDownloadURL(storageRef);
+
+        // lowercase the email
+        const newEmail = email.toLowerCase();
+        setEmail(newEmail);
+        
+        // store the user's information in firebase
+        if(password === confirmPass) {
+            auth.createUserWithEmailAndPassword(email, password)
+            .then(() => {
+                // get the user's id
+                const user_id = auth.currentUser.uid;
+                // create a reference to the user's profile
+                const userRef = db.collection('users').doc(user_id);
+                // create a new document in the user's profile
+                userRef.set({
+                    name: name,
+                    email: email,
+                    profile_picture: downloadURL,
+                    id: user_id,
+                    created_at: time,
+                    bio: '',
+                    condition: '',
+                    token: '',
+                });
+            })
+            .catch(error => {
+                console.log(error);
+            });
+        } else {
+            alert('Passwords do not match');
         }
     };
 
@@ -70,30 +112,29 @@ const RegisterScreen = ({ navigation }) => {
             onChangeText={(name) => setName(name)}
             iconType='user'
             placeholder='Full Name'
-            keyboardType='email-address'
-            autoCapitalise='none' /> 
+            keyboardType='email-address' /> 
         <FormInput
             labelValue={email}
             onChangeText={(email) => setEmail(email)}
             iconType='mail'
             placeholder='Email Address'
-            keyboardType='email-address'
-            autoCapitalise='none' /> 
+            autoCapitalize='none'
+            keyboardType='email-address' /> 
         <FormInput
             labelValue={password}
             onChangeText={(password) => setPassword(password)}
             iconType='lock'
             placeholder='Password'
-            keyboardType='email-address' /> 
+            secureTextEntry={true} /> 
         <FormInput
             labelValue={confirmPass}
             onChangeText={(confirmPass) => setConfirmPass(confirmPass)}
             iconType='lock'
             placeholder='Confirm Password'
-            keyboardType='email-address' /> 
+            secureTextEntry={true}  /> 
         <FormButton 
             title="Sign Up" 
-            onPress={onSignup} />
+            onPress={() => handleSignup(image)} />
         <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
         <Text style={styles.haveAccountText}> Already have an account? <Text style={styles.signInText}>Sign in! </Text></Text>
       </TouchableOpacity>

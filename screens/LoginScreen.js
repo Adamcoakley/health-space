@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import { View, Text, Button, Image, StyleSheet, ScrollView, TouchableOpacity, 
-        TouchableWithoutFeedback, Keyboard} from 'react-native';
+import { View, Text, Button, Image, StyleSheet, ScrollView, TouchableOpacity, TouchableWithoutFeedback, Keyboard} from 'react-native';
+// KeyboardAwareScrollView: does not hide the inputs when the keyboard is open
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 //import components
 import FormInput from '../components/FormInput';
@@ -11,10 +11,15 @@ import firebase from 'firebase/compat/app';
 import { auth, db } from '../config/Firebase';
 
 const LoginScreen = ({ navigation }) => { 
+    // state variables for the email and password
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
 
+    // function to handle login
     const onLogin = () => {
+        // set email to all lowercase
+        const newEmail = email.toLowerCase();
+        setEmail(newEmail);
         firebase.auth().signInWithEmailAndPassword(email, password)
         .then((result) => {
             console.log("Firebase login succesfull:", email, password)
@@ -40,14 +45,13 @@ const LoginScreen = ({ navigation }) => {
             onChangeText={(email) => setEmail(email)}
             iconType='mail'
             placeholder='Email Address'
-            keyboardType='email-address'
             autoCapitalise='none'/> 
         <FormInput
             labelValue={password}
             onChangeText={(password) => setPassword(password)}
             iconType='lock'
             placeholder='Password'
-            keyboardType='email-address'/> 
+            secureTextEntry={true}/> 
         <TouchableOpacity style={styles.forgotButton} onPress={() => {}}>
         <View style={styles.forgotButtonContainer}>
             <Text style={styles.forgotButtonText}>Forgot Password?</Text> 

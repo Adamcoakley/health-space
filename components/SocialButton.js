@@ -3,6 +3,7 @@ import {Text, TouchableOpacity, View, StyleSheet} from 'react-native';
 import {windowHeight, windowWidth} from '../utils/Dimensions';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
+// component used for facebook and google login buttons
 const SocialButton = ({ title, type, color, backgroundColor, ...rest}) => {
   let buttonColor = backgroundColor;
   return (

@@ -147,7 +147,7 @@ const PostScreen = ({ navigation }) => {{
           <Ionicons name='md-arrow-back' size={24}color='#000'></Ionicons>
         </TouchableOpacity>
         <TouchableOpacity onPress={submitPost}>
-          <Text style={{color:'#000', fontWeight: 'bold', marginTop: 2}}>Submit Post </Text>
+          <Text style={{color:'#000', fontWeight: 'bold', marginTop: 2}}>Submit Post</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.inputContainer}>

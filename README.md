@@ -6,7 +6,7 @@ HealthSpace is a social network application like Facebook and LinkedIn, focused 
 The application contains all of a social networking application's defining features, including: 
 - **Timeline.** A central space for all users to publish and share health-related content in the form of plain text and images.
 - **Search Bar.** A search functionality making it easier to connect with other users.
-- **Friending Options.** Users have the ability to gain a following and follow other user's.
+- **Friending Options.** Users have the ability to gain a following and follow other users.
 - **Messaging Service.** Users are provided with a messaging service that allows users to communicate privately about their health concerns.
 - **Push Notifications.** Users are notified when other user's follow them or when they interact with their content.
 - **Customisable Profile.** Users can customise their profile with the addition of a health condition of interest and a short bio. 

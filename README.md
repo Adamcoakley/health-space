@@ -1,6 +1,5 @@
 # HealthSpace
-![GitHub last commit](https://img.shields.io/github/last-commit/google/skia)
-![Cocoapods platforms](https://img.shields.io/cocoapods/p/ios?color=blue&style=flat-square)
+![GitHub last commit](https://img.shields.io/github/last-commit/Adamcoakley/HealthSpace?color=blue&style=for-the-badge)
 ## Project Description 📚
 HealthSpace is a social network application like Facebook and LinkedIn, focused on people who are looking to connect with people of similar health interests.
 The application contains all of a social networking application's defining features, including: 

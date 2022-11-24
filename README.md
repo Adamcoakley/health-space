@@ -19,8 +19,7 @@ The application contains all of a social networking application's defining featu
 https://www.youtube.com/watch?v=ZkB-KLbmjiM&t=25s
 ## Showcase Website 👨🏻‍💻
 https://showcase.itcarlow.ie/C00240782/index.html
-## Usage ✍🏼
-[soon]
+
 
 
 
